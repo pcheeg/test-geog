@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>GeoRank Puzzle Generator Tester</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <h1>GeoRank Tester</h1>
+        <p>Generate and judge daily puzzles before they go into the game.</p>
+      </div>
+      <div class="badge" id="countryCount">— countries</div>
+    </header>
+
+    <section class="controls panel">
+      <label>
+        Category
+        <select id="category">
+          <option value="weekly">Weekly schedule from puzzle #</option>
+          <option value="distance">🌍 Distance from random capital</option>
+          <option value="capitalAZ">🏛️ Countries → capitals A-Z</option>
+          <option value="equator">🌎 Distance from equator</option>
+          <option value="flagsCapitalAZ">🚩 Flags → capitals A-Z</option>
+          <option value="knowledge">📊 Knowledge day weighted</option>
+          <option value="population">📊 Population</option>
+          <option value="area">📊 Area</option>
+          <option value="coastline">📊 Coastline</option>
+          <option value="highestPoint">📊 Highest point</option>
+        </select>
+      </label>
+      <label>
+        Puzzle #
+        <input id="puzzleNo" type="number" min="1" value="1" />
+      </label>
+      <label>
+        Seed tweak
+        <input id="seedTweak" type="number" value="0" />
+      </label>
+      <button id="generate">Generate</button>
+      <button id="reroll">Reroll</button>
+    </section>
+
+    <section class="panel puzzlePanel">
+      <div class="puzzleHeader">
+        <div>
+          <h2 id="title">Generate a puzzle</h2>
+          <p id="instruction">Choose a category and generate.</p>
+        </div>
+        <div class="scoreBox">
+          <span id="qualityScore">—</span>
+          <small>quality</small>
+        </div>
+      </div>
+
+      <div id="reference" class="reference hidden"></div>
+
+      <div class="columns">
+        <div>
+          <h3>Player sees</h3>
+          <ol id="promptList" class="list prompt"></ol>
+        </div>
+        <div>
+          <h3>Correct order</h3>
+          <ol id="answerList" class="list answer"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel diagnosticsPanel">
+      <h3>Diagnostics</h3>
+      <div id="diagnostics" class="diagnostics">No puzzle generated yet.</div>
+    </section>
+  </main>
+
+  <script src="countries-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
